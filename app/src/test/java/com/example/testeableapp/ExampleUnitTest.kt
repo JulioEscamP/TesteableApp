@@ -39,6 +39,22 @@ class ExampleUnitTest {
         assertEquals(expectedTip, actualTip, 0.001)
     }
 
+    @Test
+    fun calculateTotalPerPerson_WithTip() {
+        val billAmount = 100.0
+        val tipPercent = 15
+        val roundUp = false
+        val numberOfPeople = 4
+
+        val tip = calculateTip(billAmount, tipPercent, roundUp)
+
+        val expectedTotalPerPerson = 28.75
+
+        val totalPerPerson = if (numberOfPeople > 0) (billAmount + tip) / numberOfPeople else 0.0
+
+        assertEquals(expectedTotalPerPerson, totalPerPerson, 0.001)
+    }
+
 
     @Test
     fun calcularPropina_conMontoDecimalYPorcentajeFijo() {
