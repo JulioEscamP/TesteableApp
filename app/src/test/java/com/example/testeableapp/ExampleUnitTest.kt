@@ -19,6 +19,16 @@ class ExampleUnitTest {
         assertEquals(expectedTip, actualTip, 0.001)
     }
 
+    @Test
+    fun calculateTip_15Percent_RoundUp() {
+        val amount = 97.0
+        val tipPercent = 15
+        val roundUp = true
+        val expectedTip = 15.0
+        val actualTip = calculateTip(amount, tipPercent, roundUp)
+        assertEquals(expectedTip, actualTip, 0.001)
+    }
+
 
     @Test
     fun calcularPropina_conMontoDecimalYPorcentajeFijo() {
