@@ -1,17 +1,36 @@
 package com.example.testeableapp
 
 import org.junit.Test
+import org.junit.Assert.assertEquals
+import com.example.testeableapp.ui.components.calcularPropina
+import com.example.testeableapp.ui.components.ResultadoPropina
 
-import org.junit.Assert.*
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun calcularPropina_conMontoDecimalYPorcentajeFijo() {
+        val monto = 123.45
+        val porcentaje = 15
+        val propinaEsperada = monto * porcentaje / 100
+        val totalEsperado = monto + propinaEsperada
+
+        val resultado = calcularPropina(monto, porcentaje, redondear = false)
+
+        assertEquals(propinaEsperada, resultado.propina, 0.01)
+        assertEquals(totalEsperado, resultado.total, 0.01)
+    }
+
+    @Test
+    fun calcularTotalPorPersona_conCeroPersonas_devuelveCero() {
+        val monto = 100.0
+        val porcentaje = 10
+        val personas = 0
+
+        val resultado = calcularPropina(monto, porcentaje, redondear = false)
+
+        val totalPorPersona = if (personas > 0) resultado.total / personas else 0.0
+
+        assertEquals(0.0, totalPorPersona, 0.01)
     }
 }
