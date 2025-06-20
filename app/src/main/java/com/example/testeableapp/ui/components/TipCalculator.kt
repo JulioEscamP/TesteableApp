@@ -12,3 +12,4 @@ fun calcularPropina(monto: Double, porcentaje: Int, redondear: Boolean): Resulta
     val total = monto + propina
     return ResultadoPropina(propina, total)
 }
+
